@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle - {{ objeto.nombre }}</title>
+    <link href="https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="slidebar">
+            <ul>
+                <li>
+                    <a href="/index" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-home-alt-2"></i></span>
+                        <span class="item-txt">Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/publicar" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-form"></i></span>
+                        <span class="item-txt">Publicar</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/catalogo" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-store"></i></span>
+                        <span class="item-txt">Catálogo</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/mis_objetos" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-box-alt"></i></span>
+                        <span class="item-txt">Mis Objetos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/logout" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-arrow-out-left-square-half"></i></span>
+                        <span class="item-txt">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h1>{{ objeto.nombre }}</h1>
+    <p>{{ objeto.descripcion }}</p>
+    <p>Contacto: {{ objeto.contacto }}</p>
+
+    {% if objeto.imagen %}
+    <img src="{{ objeto.imagen }}" alt="{{ objeto.nombre }}" width="200">
+    {% endif %}
+
+    <p>
+        <li>
+            <a href="/catalogo" class="nav__link">
+                <span class="item-icon">
+                    <i class='bxr  bx-arrow-left-stroke'></i>
+                </span>
+                <span class="item-txt">Volver</span>
+            </a>
+        </li>
+        {% if session['user_id'] == objeto.user_id %}
+        | <li>
+            <a href="/editar/{{ objeto.id }}" class="nav__link">
+                <span class="item-icon">
+                    <i class='bxr  bx-edit'></i>
+                </span>
+                <span class="item-txt">Editar</span>
+            </a>
+        </li>
+        |
+    <form action="/eliminar/{{ objeto.id }}" method="POST" style="display:inline;">
+        <button type="submit"> 
+            <i class='bxr  bx-trash'></i>Eliminar
+        </button>
+    </form>
+    {% endif %}
+    </p>
+</body>
+
+</html>

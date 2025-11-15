@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="login-body">
+    <h1 class="titulo-fondo">¡Bienvenido De Nuevo a ReUseIt!</h1>
+    <main class="main-login">
+        {% block content %}
+        <form action="{{ url_for('login') }}" method="POST" class="login">
+
+            <h2>Inicio de sesión</h2>
+
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <label for="email">Email</label>
+            <div>
+                <input class="form__input" type="email" name="email" id="email" placeholder="Introduzca su e-mail"
+                    required>
+            </div>
+
+            <label for="password">Contraseña</label>
+            <div>
+                <input class="form__input" type="password" name="password" id="password"
+                    placeholder="Introduzca su contraseña" required>
+
+                <button class="form__button">Iniciar sesión</button>
+
+                <div class="signup-link">
+                    ¿No tienes una cuenta?
+                    <a href="/reg"> Registrarme</a>
+                </div>
+
+        </form>
+        {% endblock %}
+    </main>
+</body>
+
+</html>

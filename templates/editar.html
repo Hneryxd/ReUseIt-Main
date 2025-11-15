@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar - {{ objeto.nombre }}</title>
+    <link href="https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="slidebar">
+            <ul>
+                <li>
+                    <a href="/index" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-home-alt-2"></i></span>
+                        <span class="item-txt">Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/publicar" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-form"></i></span>
+                        <span class="item-txt">Publicar</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/catalogo" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-store"></i></span>
+                        <span class="item-txt">Catálogo</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/mis_objetos" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-box-alt"></i></span>
+                        <span class="item-txt">Mis Objetos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/logout" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-arrow-out-left-square-half"></i></span>
+                        <span class="item-txt">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h1>Editar objeto</h1>
+
+    <form action="" method="POST">
+        <p>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" name="nombre" id="nombre" value="{{ objeto.nombre }}" required>
+        </p>
+        <p>
+            <label for="descripcion">Descripción:</label><br>
+            <textarea name="descripcion" id="descripcion" required>{{ objeto.descripcion }}</textarea>
+        </p>
+        <p>
+            <label for="contacto">Contacto:</label><br>
+            <input type="text" name="contacto" id="contacto" value="{{ objeto.contacto }}" required>
+        </p>
+        <p>
+            <label for="imagen">URL de imagen:</label><br>
+            <input type="text" name="imagen" id="imagen" value="{{ objeto.imagen }}">
+        </p>
+        <button type="submit">
+            <i class='bxr  bx-save'    ></i> Guardar cambios
+        </button>
+    </form>
+
+    <p>
+        <li><a href="/detalle/{{ objeto.id }}" class="nav__link">
+                <span class="item-icon">
+                    <i class='bxr  bx-x'    ></i> 
+                </span>
+                <span class="item-txt">Cancelar</span>
+            </a>
+        </li>
+    </p>
+</body>
+
+</html>

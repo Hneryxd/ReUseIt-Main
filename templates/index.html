@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - ReUse Perú</title>
+    <link href="https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+    {% if session['user_id'] %}
+
+    <p>Has iniciado sesión correctamente.</p>
+
+    <div class="container">
+        <div class="slidebar">
+            <ul>
+                <li>
+                    <a href="/index" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-home-alt-2"></i></span>
+                        <span class="item-txt">Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/publicar" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-form"></i></span>
+                        <span class="item-txt">Publicar</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/catalogo" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-store"></i></span>
+                        <span class="item-txt">Catálogo</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/mis_objetos" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-box-alt"></i></span>
+                        <span class="item-txt">Mis Objetos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/logout" class="nav__link">
+                        <span class="item-icon"><i class="bx bx-arrow-out-left-square-half"></i></span>
+                        <span class="item-txt">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% else %}
+    <p>No estás logueado.</p>
+    <a href="/">Iniciar sesión</a> |
+    <a href="/reg">Registrarse</a>
+    {% endif %}
+
+</body>
+
+</html>
